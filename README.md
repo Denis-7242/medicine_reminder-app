@@ -31,20 +31,65 @@ The app includes three main screens:
 
 1. Clone or download this project
 
-2. Install dependencies:
+2. **Copy Android configuration files** to your project:
+   
+   **For Kotlin DSL projects (.kts files):**
+   - `android/app/build.gradle.kts`
+   - `android/build.gradle.kts`
+   - `android/settings.gradle.kts`
+   - `android/gradle.properties`
+   - `android/app/src/main/AndroidManifest.xml`
+   
+   **For Groovy projects (.gradle files):**
+   - `android/app/build.gradle`
+   - `android/build.gradle`
+   - `android/settings.gradle`
+   - `android/gradle.properties`
+   - `android/app/src/main/AndroidManifest.xml`
+   
+   *Note: Check which format your project uses by looking at your existing files.*
+
+3. Install dependencies:
 ```bash
 flutter pub get
 ```
 
-3. Generate Hive adapters (if not already generated):
+4. Generate Hive adapters (if not already generated):
 ```bash
 flutter packages pub run build_runner build --delete-conflicting-outputs
 ```
 
-4. Run the app:
+5. Clean and rebuild:
+```bash
+flutter clean
+flutter pub get
+```
+
+6. Run the app:
 ```bash
 flutter run
 ```
+
+### Important Android Setup Notes
+
+The app requires **Core Library Desugaring** for `flutter_local_notifications` to work properly. This is already configured in the provided `build.gradle` file with:
+
+```groovy
+compileOptions {
+    coreLibraryDesugaringEnabled true
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
+}
+```
+
+**Minimum SDK Requirements:**
+- minSdk: 21 (Android 5.0)
+- compileSdk: 34 (Android 14)
+- targetSdk: 34
 
 ## 📦 Project Structure
 
