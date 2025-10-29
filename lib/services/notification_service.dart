@@ -1,5 +1,6 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:intl/intl.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest_all.dart' as tz;
 import '../models/medicine_model.dart';
 
 class NotificationService {
@@ -7,6 +8,9 @@ class NotificationService {
       FlutterLocalNotificationsPlugin();
 
   static Future<void> init() async {
+    // Initialize timezone database
+    tz.initializeTimeZones();
+    
     const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
     const iosSettings = DarwinInitializationSettings(
       requestAlertPermission: true,
@@ -38,8 +42,9 @@ class NotificationService {
       final hour = int.parse(timeParts[0]);
       final minute = int.parse(timeParts[1]);
 
-      final now = DateTime.now();
-      var scheduledDate = DateTime(
+      final now = tz.TZDateTime.now(tz.local);
+      var scheduledDate = tz.TZDateTime(
+        tz.local,
         now.year,
         now.month,
         now.day,
@@ -58,7 +63,7 @@ class NotificationService {
         notificationId,
         '💊 Time to take ${medicine.name}',
         'Dosage: ${medicine.dosage}',
-        _convertToTZDateTime(scheduledDate),
+        scheduledDate,
         NotificationDetails(
           android: AndroidNotificationDetails(
             'medicine_reminders',
@@ -107,10 +112,5 @@ class NotificationService {
         iOS: DarwinNotificationDetails(),
       ),
     );
-  }
-
-  // Helper method to convert DateTime to TZDateTime (simplified)
-  static DateTime _convertToTZDateTime(DateTime dateTime) {
-    return dateTime;
   }
 }
