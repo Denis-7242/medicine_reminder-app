@@ -88,7 +88,6 @@ class NotificationService {
   }
 
   static Future<void> cancelMedicineNotifications(String medicineId) async {
-    // Cancel all possible notification IDs for this medicine (up to 10 times per day)
     for (int i = 0; i < 10; i++) {
       final notificationId = medicineId.hashCode + i;
       await _notifications.cancel(notificationId);
