@@ -123,16 +123,6 @@ For Android 13+ (API level 33), notification permissions are automatically reque
 - `SCHEDULE_EXACT_ALARM` - Schedule precise reminders
 - `RECEIVE_BOOT_COMPLETED` - Restore reminders after device restart
 
-### iOS
-
-Add the following to your `Info.plist` for notification support:
-
-```xml
-<key>UIBackgroundModes</key>
-<array>
-    <string>fetch</string>
-    <string>remote-notification</string>
-</array>
 ```
 
 ## 📚 Dependencies
