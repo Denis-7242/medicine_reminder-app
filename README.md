@@ -144,7 +144,7 @@ For Android 13+ (API level 33), notification permissions are automatically reque
 
 ## 🔔 Notifications
 
-The app uses `flutter_local_notifications` to schedule reminders:
+The app uses `flutter_local_notifications`(hive) to schedule reminder:
 - Notifications are scheduled for exact times
 - Persistent across app restarts
 - Show medicine name and dosage
@@ -153,9 +153,9 @@ The app uses `flutter_local_notifications` to schedule reminders:
 ## 💾 Data Storage
 
 All data is stored locally using Hive:
-- **Medicines**: Stores medicine details and reminder times
+- **Medicines**: Stores medicine details and reminder times set by user
 - **Logs**: Tracks daily medication intake with timestamps
-- No internet connection required
+- No internet connection required for the application to work
 - Fast and efficient local database
 
 ## 🚨 Known Limitations
