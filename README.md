@@ -1,6 +1,6 @@
 # 💊 Medicine Reminder & Tracker
 
-A beautiful and functional Flutter app to help users remember to take their medications on time and track their adherence.
+A beautiful and functional Flutter app to help users remember to take their medications on time and track their adherence when set.
 
 ## ✨ Features
 
@@ -153,7 +153,7 @@ The app uses `flutter_local_notifications` to schedule reminders:
 ## 💾 Data Storage
 
 All data is stored locally using Hive:
-- **Medicines**: Stores medicine details and reminder times
+- **Medicines**: Stores medicine details and reminder times set
 - **Logs**: Tracks daily medication intake with timestamps
 - No internet connection required
 - Fast and efficient local database
@@ -161,7 +161,7 @@ All data is stored locally using Hive:
 ## 🚨 Known Limitations
 
 - Currently supports "Daily" frequency (Weekly and As Needed are stored but not fully implemented)
-- No cloud backup (all data is local)
+- No cloud backup (all data is local using hive)
 - No medicine inventory tracking
 - No refill reminders
 
