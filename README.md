@@ -161,7 +161,7 @@ All data is stored locally using Hive:
 ## 🚨 Known Limitations
 
 - Currently supports "Daily" frequency (Weekly and As Needed are stored but not fully implemented)
-- No cloud backup (all data is local)
+- No cloud backup (all data is local using hive)
 - No medicine inventory tracking
 - No refill reminders
 
